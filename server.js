@@ -226,5 +226,32 @@ function extractContentUrl(html) {
   return match?.[1] || null;
 }
 
+/* ===============================
+   PRIVACY POLICY
+================================ */
+app.get("/privacy", (req, res) => {
+  res.type("html").send(`
+    <!doctype html>
+    <html>
+    <head>
+      <title>Freeflo Privacy Policy</title>
+    </head>
+    <body style="font-family:Arial;max-width:800px;margin:40px auto;line-height:1.6;">
+      <h1>Freeflo Privacy Policy</h1>
+
+      <p>Freeflo does not collect, store, or sell personal information.</p>
+
+      <p>When a user submits a URL, it is sent to https://freeflo.onrender.com 
+      solely to extract contentUrl metadata.</p>
+
+      <p>No personal data is stored or tracked.</p>
+
+      <p>Freeflo does not use analytics, advertising, or tracking tools.</p>
+
+    </body>
+    </html>
+  `);
+});
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log("Freeflo running on port " + PORT));
